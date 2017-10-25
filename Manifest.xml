@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <plugin name="FiltroCronogramaDesembolso" label="Filtro Cronograma Desembolso" plugin-version="1.0" ecidade-version="2.3.36" id-modulo="1">
+
+    <!-- Extensão -->
+    <files>
+      <file name="FiltroCronogramaDesembolso.xml" path="/modification/xml/FiltroCronogramaDesembolso.xml"/>
+    </files>
+
+  </plugin>
+</manifest>

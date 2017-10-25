@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<modification>
+  <id>FiltroCronogramaDesembolso</id>
+  <name>Filtros da Despesa - Cronog. de Desembolso</name>
+  <ecidade-version>2.3.36</ecidade-version>
+
+  <file path="orc4_configurarmetasdespesa001.php">
+    <operation>
+      <search><![CDATA[/* [Extensao] Cronograma de Desembolso */]]></search>
+      <add position="after"><![CDATA[
+$aNiveis[9] = "Órgão/ Unidade/ Recurso/ Anexo";
+$nivel = 9;
+      ]]>
+      </add>
+    </operation>
+  </file>
+
+  <file path="orc4_cronogramafinanceiro.RPC.php">
+    <operation>
+      <search><![CDATA[$aDados[$i]->index = $i;]]></search>
+      <add position="after"><![CDATA[
+        if ($oParam->iAgrupa == 9) {
+
+          $sDescricao  = str_pad($aDados[$i]->o58_orgao, 2, '0', STR_PAD_LEFT);
+          $sDescricao .= ".".str_pad($aDados[$i]->o58_unidade,3,'0', STR_PAD_LEFT);
+          $sDescricao .= " - ".$aDados[$i]->o15_descr;
+          $sDescricao .= "/".$aDados[$i]->o11_descricao;
+          $aDados[$i]->descricao = $sDescricao;
+        }
+      ]]>
+      </add>
+    </operation>
+  </file>
+
+  <file path="orc2_acompanhamentocronograma001.php">
+      <operation>
+          <search><![CDATA[8 => "Recurso",]]></search>
+          <add position="after">
+              <![CDATA[
+                            9 => "Órgao/ Unidade/ Recurso/ Anexo",
+              ]]>
+          </add>
+      </operation>
+  </file>
+
+  <file path="orc4_acompanhamentocronogramadespesa001.php">
+    <operation>
+      <search><![CDATA[/* [Extensao] Cronograma de Desembolso */]]></search>
+      <add position="after"><![CDATA[
+$aNiveis[9] = "Órgão/ Unidade/ Recurso/ Anexo";
+$nivel = 9;
+      ]]>
+      </add>
+    </operation>
+  </file>
+
+</modification>
